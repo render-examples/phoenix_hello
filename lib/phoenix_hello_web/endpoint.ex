@@ -24,7 +24,7 @@ defmodule PhoenixHelloWeb.Endpoint do
   end
 
   plug Plug.RequestId
-  plug Plug.Logger
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
@@ -40,7 +40,7 @@ defmodule PhoenixHelloWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_phoenix_hello_key",
-    signing_salt: "0HFnf1fp"
+    signing_salt: "YmDdBxnr"
 
   plug PhoenixHelloWeb.Router
 end

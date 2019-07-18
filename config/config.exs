@@ -10,7 +10,7 @@ use Mix.Config
 # Configures the endpoint
 config :phoenix_hello, PhoenixHelloWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Ci5evZ3pBiwlS4SV2Ghjc2tP84RIGXoFakUMQtLLUo0JOYBg+BgHy58lafHPrgMI",
+  secret_key_base: "W5T5j0bQfiv9pflxTR1xk8yBRZpnqXT+JWj6TubuTLONZVNKlbml+5L88rxsdE0c",
   render_errors: [view: PhoenixHelloWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: PhoenixHello.PubSub, adapter: Phoenix.PubSub.PG2]
 
