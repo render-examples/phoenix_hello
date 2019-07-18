@@ -49,10 +49,10 @@ config :phoenix_hello, PhoenixHelloWeb.Endpoint,
 config :phoenix_hello, PhoenixHelloWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/phoenix_hello_web/views/.*(ex)$},
-      ~r{lib/phoenix_hello_web/templates/.*(eex)$}
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/phoenix_hello_web/{live,views}/.*(ex)$",
+      ~r"lib/phoenix_hello_web/templates/.*(eex)$"
     ]
   ]
 
