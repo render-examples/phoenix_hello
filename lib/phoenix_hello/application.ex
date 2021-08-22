@@ -6,12 +6,15 @@ defmodule PhoenixHello.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
+      # Start the Telemetry supervisor
+      PhoenixHelloWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: PhoenixHello.PubSub},
+      # Start the Endpoint (http/https)
       PhoenixHelloWeb.Endpoint
-      # Starts a worker by calling: PhoenixHello.Worker.start_link(arg)
-      # {PhoenixHello.Worker, arg},
+      # Start a worker by calling: PhoenixHello.Worker.start_link(arg)
+      # {PhoenixHello.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

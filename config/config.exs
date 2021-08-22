@@ -10,9 +10,10 @@ use Mix.Config
 # Configures the endpoint
 config :phoenix_hello, PhoenixHelloWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "W5T5j0bQfiv9pflxTR1xk8yBRZpnqXT+JWj6TubuTLONZVNKlbml+5L88rxsdE0c",
-  render_errors: [view: PhoenixHelloWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PhoenixHello.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "UODh2zShDpWEjvoFulToowaaBsKKvJurVUjRz9JAlDDpvtJPPJMOyaIh9gXpmFEs",
+  render_errors: [view: PhoenixHelloWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: PhoenixHello.PubSub,
+  live_view: [signing_salt: "3tnXyugr"]
 
 # Configures Elixir's Logger
 config :logger, :console,
