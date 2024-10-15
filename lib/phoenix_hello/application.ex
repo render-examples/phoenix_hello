@@ -5,16 +5,18 @@ defmodule PhoenixHello.Application do
 
   use Application
 
+  @impl true
   def start(_type, _args) do
     children = [
-      # Start the Telemetry supervisor
       PhoenixHelloWeb.Telemetry,
-      # Start the PubSub system
+      {DNSCluster, query: Application.get_env(:phoenix_hello, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixHello.PubSub},
-      # Start the Endpoint (http/https)
-      PhoenixHelloWeb.Endpoint
+      # Start the Finch HTTP client for sending emails
+      {Finch, name: PhoenixHello.Finch},
       # Start a worker by calling: PhoenixHello.Worker.start_link(arg)
-      # {PhoenixHello.Worker, arg}
+      # {PhoenixHello.Worker, arg},
+      # Start to serve requests, typically the last entry
+      PhoenixHelloWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -25,6 +27,7 @@ defmodule PhoenixHello.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
+  @impl true
   def config_change(changed, _new, removed) do
     PhoenixHelloWeb.Endpoint.config_change(changed, removed)
     :ok
